@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContex } from "../Context/AuthContex";
+import Swal from "sweetalert2";
 
 const MyBids = () => {
   const { user } = useContext(AuthContex);
@@ -17,6 +18,38 @@ const MyBids = () => {
   }, [user.email]);
 
   console.log(deltet.byer_image);
+
+  const handelDelet = (_id) => {
+    // console.log("Delet Now Buttons");
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("Delet");
+        fetch(`http://localhost:3000/bids/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              const filters = deltet.filter((one) => one._id !== _id);
+              setDeltet(filters);
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
+            }
+          });
+      }
+    });
+  };
 
   return (
     <div className="w-10/12 mx-auto my-16 rounded-lg shadow-2xl">
@@ -68,7 +101,10 @@ const MyBids = () => {
                   )}
                 </td>
                 <th>
-                  <button className="btn btn-outline text-red-600 btn-xs">
+                  <button
+                    onClick={() => handelDelet(bid._id)}
+                    className="btn btn-outline text-red-600 btn-xs"
+                  >
                     Remove Bid
                   </button>
                 </th>
