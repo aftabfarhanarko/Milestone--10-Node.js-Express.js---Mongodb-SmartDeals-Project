@@ -3,7 +3,6 @@ import { Link } from "react-router";
 
 const RecentProducat = ({ promiseData }) => {
   const producats = use(promiseData);
-  console.log(producats);
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mx-auto">

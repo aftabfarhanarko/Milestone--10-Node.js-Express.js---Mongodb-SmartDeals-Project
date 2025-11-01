@@ -1,5 +1,3 @@
-import React from "react";
-import Navbar from "./Navbar";
 
 const CreatProducat = () => {
   const handleSubmit = (e) => {

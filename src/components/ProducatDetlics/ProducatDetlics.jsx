@@ -4,7 +4,6 @@ import { Link, useLoaderData } from "react-router";
 import { AuthContex } from "../../Context/AuthContex";
 import { IoClose } from "react-icons/io5";
 import Swal from "sweetalert2";
-import BidesProducat from "./BidesProducat";
 
 const ProducatDetlics = () => {
   const producat = useLoaderData();
@@ -20,7 +19,7 @@ const ProducatDetlics = () => {
     fetch(`http://localhost:3000/producat/bids/${findesID}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setBides(data);
       });
   }, [findesID]);
@@ -35,7 +34,7 @@ const ProducatDetlics = () => {
     const name = e.target.name.value;
     const images = e.target.imges.value;
     const price = Number(e.target.price.value);
-    console.log({ email, price, name, images });
+    // console.log({ email, price, name, images });
     const producatID = producat._id;
     console.log(producatID);
 
@@ -78,7 +77,7 @@ const ProducatDetlics = () => {
       });
   };
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <div className="bg-base-200 py-15">

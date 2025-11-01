@@ -17,7 +17,12 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element:<PrivetRouter> <Home></Home></PrivetRouter>,
+        element: (
+          <PrivetRouter>
+            {" "}
+            <Home></Home>
+          </PrivetRouter>
+        ),
       },
 
       {
@@ -29,9 +34,15 @@ export const router = createBrowserRouter([
         ),
       },
       {
-      path:"/producat/:id",
-      loader:({params}) => fetch(`http://localhost:3000/producat/${params.id}`) ,
-      element: <PrivetRouter> <ProducatDetlics></ProducatDetlics></PrivetRouter>,
+        path: "/producat/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:3000/producat/${params.id}`),
+        element: (
+          <PrivetRouter>
+            {" "}
+            <ProducatDetlics></ProducatDetlics>
+          </PrivetRouter>
+        ),
       },
       {
         path: "/login",
@@ -59,11 +70,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/mybids",
-        element: (
-          <PrivetRouter>
-            <MyBids></MyBids>
-          </PrivetRouter>
-        ),
+        element: <MyBids></MyBids>,
       },
       {
         path: "/creatProducat",
@@ -74,11 +81,9 @@ export const router = createBrowserRouter([
         ),
       },
       {
-        path:"*",
-        element:<h1>This is 404 error pages</h1>
-      }
+        path: "*",
+        element: <h1>This is 404 error pages</h1>,
+      },
     ],
-    
   },
-  
 ]);
