@@ -1,19 +1,30 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { GoArrowLeft } from "react-icons/go";
 import { Link, useLoaderData } from "react-router";
 import { AuthContex } from "../../Context/AuthContex";
 import { IoClose } from "react-icons/io5";
 import Swal from "sweetalert2";
+import BidesProducat from "./BidesProducat";
 
 const ProducatDetlics = () => {
   const producat = useLoaderData();
-  console.log(producat);
   const { user } = useContext(AuthContex);
+  const [bides, setBides] = useState(null);
   const sdhsh = producat.created_at;
   const tashdo = new Date(sdhsh);
   const formatted = tashdo.toISOString().split("T")[0]; // "2025-10-29"
-
   const refrence = useRef(null);
+  const findesID = producat._id;
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/producat/bids/${findesID}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setBides(data);
+      });
+  }, [findesID]);
+
   const handelModal = () => {
     refrence.current.showModal();
   };
@@ -57,9 +68,18 @@ const ProducatDetlics = () => {
             showConfirmButton: false,
             timer: 1000,
           });
+
+          // add new bids
+          bidesProducat._id = data.insertedId;
+          const myState = [...bides, bidesProducat];
+          myState.sort((a,b) => b.bid_price - a.bid_price)
+          setBides(myState);
         }
       });
   };
+
+  console.log(user);
+
   return (
     <div className="bg-base-200 py-15">
       <div className="max-w-7xl mx-auto p-6  ">
@@ -451,7 +471,59 @@ const ProducatDetlics = () => {
         {/* Product Description Section */}
 
         <div className="py-20">
-          <h1 className="text-3xl font-bold"> Bids For This Products: 03</h1>
+          <h2 className="text-3xl font-semibold text-purple-600 mt-2">
+            Bids For This Products:{""}
+          </h2>
+
+          <div className="overflow-x-auto shadow">
+            <table className="table">
+              {/* head */}
+              <thead>
+                <tr>
+                  <th>SL No</th>
+                  <th>Byer Name</th>
+                  <th>Byer Email</th>
+                  <th>Bid Price</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {/* row 1 */}
+                {bides?.map((bid, index) => (
+                  <tr>
+                    <th>{index + 1}</th>
+                    <td>
+                      <div className="flex items-center gap-3">
+                        <div className="avatar">
+                          <div className="mask mask-squircle h-12 w-12">
+                            <img
+                              src={bid.byer_image ? bid.byer_image : "No Img"}
+                              alt="No Img"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <p className="font-bold"> {bid.byer_name}</p>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <span className="badge badge-ghost badge-sm">
+                        {bid.byer_email}
+                      </span>
+                    </td>
+                    <td>
+                      $<span>{bid.bid_price}</span>
+                    </td>
+                    <th>
+                      <button className="btn btn-ghost btn-xs">details</button>
+                    </th>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
