@@ -31,6 +31,8 @@ const Navbar = () => {
     logOutUser();
   };
 
+  console.log(user);
+
   return (
     <div>
       <div className="navbar  w-11/12 mx-auto ">
@@ -71,12 +73,19 @@ const Navbar = () => {
           {loding ? (
             <HashLoader color="#13e1cf" />
           ) : user ? (
-            <button
-              onClick={handelLogOut}
-              className="ml-2 btn  text-white bg-gradient-to-r from-[#632EE3] to-[#9F62F2]"
-            >
-              Logout
-            </button>
+            <div className="flex items-center">
+             <div className="hidden  md:block ">
+               <div className="border p-0.5 border-gray-700 rounded-full">
+                <img className=" w-7 md:w-13 rounded-full" src={user.photoURL}></img>
+              </div>
+             </div>
+              <button
+                onClick={handelLogOut}
+                className="ml-2 btn  text-white bg-gradient-to-r from-[#632EE3] to-[#9F62F2]"
+              >
+                Logout
+              </button>
+            </div>
           ) : (
             <div>
               <Link to="/login">
