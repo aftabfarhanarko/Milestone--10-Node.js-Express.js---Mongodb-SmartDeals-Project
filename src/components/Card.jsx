@@ -3,6 +3,8 @@ import { Link } from "react-router";
 
 const Card = ({ promiseProducat }) => {
   const producats = use(promiseProducat);
+  console.log(producats);
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mx-auto my-10">
       {producats.map((producat) => (

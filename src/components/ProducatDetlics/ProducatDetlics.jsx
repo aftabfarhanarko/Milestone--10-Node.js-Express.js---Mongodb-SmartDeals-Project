@@ -15,6 +15,8 @@ const ProducatDetlics = () => {
   const refrence = useRef(null);
   const findesID = producat._id;
 
+  console.log(producat);
+  
   useEffect(() => {
     fetch(`http://localhost:3000/producat/bids/${findesID}`,{
         headers:{
@@ -261,7 +263,7 @@ const ProducatDetlics = () => {
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-12 bg-gray-300 rounded-full"></div>
                   <div>
-                    <div className="font-semibold text-gray-900">{""}</div>
+                    <div className="font-semibold text-gray-900">{producat.seller_name}</div>
                     <div className="text-sm text-gray-600">{""}</div>
                   </div>
                 </div>
@@ -270,7 +272,8 @@ const ProducatDetlics = () => {
                 <div className="space-y-2 text-sm">
                   <div className="flex">
                     <span className="font-semibold text-gray-700  flex gap-2">
-                      Location: <span>{producat.seller_name}</span>
+                      Location: <span>
+                        {producat.location}</span>
                     </span>
                     <span className="text-gray-600">{""}</span>
                   </div>

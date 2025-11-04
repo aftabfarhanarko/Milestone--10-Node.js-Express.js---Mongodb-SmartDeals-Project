@@ -20,7 +20,7 @@ const CreatProducat = () => {
     const location = e.target.location.value;
     const seller_image = e.target.sellerImageUrl.value;
     const seller_name = e.target.sellerName.value;
-    const seller_email = e.target.sellerEmail.value;
+    const email = e.target.sellerEmail.value;
     const usage = e.target.usageTime.value;
     const description = e.target.description.value;
     const seller_contact = e.target.sellerContact.value;
@@ -34,7 +34,7 @@ const CreatProducat = () => {
       price_max,
       usage,
       image,
-      seller_email,
+      email,
       seller_name,
       location,
       description,
@@ -44,6 +44,7 @@ const CreatProducat = () => {
       status,
       condition,
     };
+    
 
     fetch("http://localhost:3000/producat", {
       method: "POST",
@@ -248,7 +249,8 @@ const CreatProducat = () => {
                   id="sellerEmail"
                   name="sellerEmail"
                   required
-                  placeholder="lei13155@nlnlord.com"
+                  disabled
+                  defaultValue={user.email}
                   className={`w-full px-4 py-3 rounded-lg border  focus:ring-2 focus:ring-purple-500 focus:border-transparent focus:outline-none  transition-all`}
                 />
               </div>
