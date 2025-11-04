@@ -2,6 +2,7 @@ import React from 'react';
 import { IoIosSearch } from 'react-icons/io';
 import leftPattern from "../../assets/bg-hero-left.png"; // your 2nd image
 import rightPattern from "../../assets/bg-hero-right.png";
+import { Link } from 'react-router';
 
 const Hero = () => {
     return (
@@ -23,7 +24,7 @@ const Hero = () => {
 
         {/* Hero Text */}
         <div className="max-w-3xl relative z-10 px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
+          <h1 className="text-3xl md:text-5xl font-bold text-gray-900 leading-tight">
             Deal Your <span className="text-[#8A3FFC]">Products</span> <br />
             In A <span className="text-[#8A3FFC]">Smart</span> Way !
           </h1>
@@ -47,12 +48,17 @@ const Hero = () => {
 
           {/* Buttons */}
           <div className="flex items-center justify-center gap-4 mt-6">
-            <button className="bg-[#8A3FFC] text-white font-semibold px-6 py-2 rounded-lg shadow hover:bg-[#7a33db] transition">
+           <Link to='/allproduct'>
+            <button className="bg-[#8A3FFC] text-white  md:font-medium
+            px-3 md:px-6 py-2 rounded-lg shadow hover:bg-[#7a33db] transition">
               Watch All Products
             </button>
-            <button className="border border-[#8A3FFC] text-[#8A3FFC] font-semibold px-6 py-2 rounded-lg hover:bg-[#f2e9ff] transition">
+           </Link>
+           <Link>
+            <button className="border border-[#8A3FFC] text-[#8A3FFC] font-semibold px-3 md:px-6 py-2 rounded-lg hover:bg-[#f2e9ff] transition">
               Post an Product
             </button>
+           </Link>
           </div>
         </div>
       </section> 
