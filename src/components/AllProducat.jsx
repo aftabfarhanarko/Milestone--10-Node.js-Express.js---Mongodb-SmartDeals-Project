@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 import Card from "./Card";
 import Loder from "./Loder";
 
-const promiseProducat = fetch("http://localhost:3000/producat").then(res => res.json())
+const promiseProducat = fetch("https://smart-deals-server-one.vercel.app/producat").then(res => res.json())
 const AllProducat = () => {
   
   return (

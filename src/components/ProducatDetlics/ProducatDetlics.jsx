@@ -17,7 +17,7 @@ const ProducatDetlics = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:3000/producat/bids/${findesID}`, {
+    fetch(`https://smart-deals-server-one.vercel.app/producat/bids/${findesID}`, {
       headers: {
         author: `Bearer ${user.accessToken}`,
       },
@@ -47,7 +47,7 @@ const ProducatDetlics = () => {
       status: "pending",
     };
 
-    fetch("http://localhost:3000/bids", {
+    fetch("https://smart-deals-server-one.vercel.app/bids", {
       method: "POST",
       headers: {
         "content-type": "application/json",

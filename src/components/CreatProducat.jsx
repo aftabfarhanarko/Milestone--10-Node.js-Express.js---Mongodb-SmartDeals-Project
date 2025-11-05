@@ -45,7 +45,7 @@ const CreatProducat = () => {
       condition,
     };
 
-    // fetch("http://localhost:3000/producat", {
+    // fetch("https://smart-deals-server-one.vercel.app/producat", {
     //   method: "POST",
     //   headers: {
     //     "content-type": "application/json",

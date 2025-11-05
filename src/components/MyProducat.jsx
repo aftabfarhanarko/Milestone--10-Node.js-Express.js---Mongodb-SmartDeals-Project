@@ -10,7 +10,7 @@ const MyProducat = () => {
 
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:3000/producat?email=${user.email}`, {
+      fetch(`https://smart-deals-server-one.vercel.app/producat?email=${user.email}`, {
         method: "GET",
       })
         .then((res) => res.json())

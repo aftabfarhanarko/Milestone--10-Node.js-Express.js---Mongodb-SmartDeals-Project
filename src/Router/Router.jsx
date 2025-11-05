@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
       {
         path: "/producat/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/producat/${params.id}`),
+          fetch(`https://smart-deals-server-one.vercel.app/producat/${params.id}`),
         element: (
           <PrivetRouter>
             {" "}

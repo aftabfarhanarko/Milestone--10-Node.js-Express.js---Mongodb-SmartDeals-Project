@@ -47,7 +47,7 @@ const AUthProvider = ({ children }) => {
 
       if (currentUser) {
         const logIndUser = {email:currentUser.email};
-        fetch(`http://localhost:3000/jseonToken`, {
+        fetch(`https://smart-deals-server-one.vercel.app/jseonToken`, {
           method: "POST",
           headers: {
             "content-type": "application/json",

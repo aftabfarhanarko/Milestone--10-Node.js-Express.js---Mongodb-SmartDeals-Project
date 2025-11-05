@@ -29,7 +29,7 @@ const Register = () => {
           };
           navagiet(`${locations.state ? locations.state : "/"}`);
 
-          fetch("http://localhost:3000/user", {
+          fetch("https://smart-deals-server-one.vercel.app/user", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -58,7 +58,7 @@ const Register = () => {
           image: result.user.photoURL,
         };
 
-        fetch("http://localhost:3000/user", {
+        fetch("https://smart-deals-server-one.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",

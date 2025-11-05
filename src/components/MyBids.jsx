@@ -22,7 +22,7 @@ const MyBids = () => {
   //JWT token verify 
   // useEffect(() => {
   //   if (user.email) {
-  //     fetch(`http://localhost:3000/bids?email=${user.email}`, {
+  //     fetch(`https://smart-deals-server-one.vercel.app/bids?email=${user.email}`, {
   //       headers: {
   //         author: `Bearer ${localStorage.getItem("token")}`,
   //       },
@@ -49,7 +49,7 @@ const MyBids = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log("Delet");
-        fetch(`http://localhost:3000/bids/${_id}`, {
+        fetch(`https://smart-deals-server-one.vercel.app/bids/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

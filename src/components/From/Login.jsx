@@ -25,7 +25,7 @@ const Login = () => {
           image: result.user.photoURL,
         };
         // console.log(result);
-        fetch("http://localhost:3000/user", {
+        fetch("https://smart-deals-server-one.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -53,7 +53,7 @@ const Login = () => {
           image: result.user.photoURL,
         };
 
-        fetch("http://localhost:3000/user", {
+        fetch("https://smart-deals-server-one.vercel.app/user", {
           method: "POST",
           headers: {
             "content-type": "application/json",

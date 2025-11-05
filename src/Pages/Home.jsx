@@ -4,7 +4,7 @@ import RecentProducat from "../components/RecentProducat/RecentProducat";
 import { HashLoader } from "react-spinners";
 import Hero from "../components/Hero/Hero";
 
-const promiseData = fetch("http://localhost:3000/limet-producat").then((res) =>
+const promiseData = fetch("https://smart-deals-server-one.vercel.app/limet-producat").then((res) =>
   res.json()
 );
 const Home = () => {
