@@ -10,32 +10,14 @@ const MyBids = () => {
   const [bidesData, setBidesData] = useState([]);
   const axiosSecure = useAxiosSecure();
 
-  // useEffect(() => {
-  //   if (user.email) {
-  //     fetch(`http://localhost:3000/bids?email=${user.email}`,{
-  //       headers:{
-  //         author: `Bearer ${user.accessToken}`
-  //       }
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log("Reques Data ", data);
-  //         setBidesData(data);
-  //       });
-  //   }
-  // }, [user.email]);
-
 
   
   useEffect(() => {
   axiosSecure.get(`/bids?email=${user.email}`)
   .then(data => {
-    // console.log(data.data);
     setBidesData(data.data)
   })
   },[user, axiosSecure])
-
-
 
   //JWT token verify 
   // useEffect(() => {
